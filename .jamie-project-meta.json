@@ -1,0 +1,11 @@
+{
+  "name": "codex-run-pulse",
+  "summary": "Codex Run Pulse turns the local Codex CLI JSONL event log from this run into a static browser dashboard with event counts, command history, and a line-by-line timeline.",
+  "category": "data-viz",
+  "tech_stack": ["Node.js", "HTML", "CSS", "JavaScript", "GitHub Pages"],
+  "test_commands": ["npm test"],
+  "run_commands": ["npm run build:data", "npm run serve"],
+  "github_repo": "jamiegonzalez929/codex-run-pulse",
+  "github_url": "https://github.com/jamiegonzalez929/codex-run-pulse",
+  "pages_url": "https://jamiegonzalez929.github.io/codex-run-pulse/"
+}

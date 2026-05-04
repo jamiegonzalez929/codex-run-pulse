@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Codex Run Pulse</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Local Codex CLI telemetry</p>
+        <h1>Codex Run Pulse</h1>
+      </div>
+      <p class="summary" id="summary">Loading run data...</p>
+    </header>
+
+    <main>
+      <section class="metrics" aria-label="Run metrics">
+        <article>
+          <span id="metric-lines">0</span>
+          <p>events parsed</p>
+        </article>
+        <article>
+          <span id="metric-commands">0</span>
+          <p>commands observed</p>
+        </article>
+        <article>
+          <span id="metric-failures">0</span>
+          <p>command failures</p>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>Event Mix</h2>
+          <p>Counts grouped by Codex JSONL event type.</p>
+        </div>
+        <div id="event-bars" class="bars"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <h2>Command Trail</h2>
+          <p>Shell commands emitted during the run, with exit status and output size.</p>
+        </div>
+        <ol id="commands" class="command-list"></ol>
+      </section>
+
+      <section class="panel timeline-panel">
+        <div class="section-title">
+          <h2>Timeline</h2>
+          <p>Every parsed JSONL record in line order.</p>
+        </div>
+        <div id="timeline" class="timeline"></div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
