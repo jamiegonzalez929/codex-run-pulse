@@ -1,6 +1,6 @@
 # Codex Run Pulse
 
-Codex Run Pulse is a small static data visualization for a local Codex CLI project run. It reads the real `codex-events.jsonl` generated in this repository and renders a GitHub Pages-friendly dashboard with event counts, command history, and a line-by-line timeline.
+Codex Run Pulse is a small static data visualization for a local Codex CLI project run. It reads a real Codex JSONL log and renders a GitHub Pages-friendly dashboard with event counts, command history, and a line-by-line timeline.
 
 ## Why It Exists
 
@@ -55,14 +55,14 @@ npm test
 
 ## Example Usage
 
-Refresh the visualization after another Codex CLI session appends to the log:
+Refresh the visualization after a Codex CLI session writes or appends to `codex-events.jsonl`:
 
 ```sh
 npm run build:data
 npm run serve
 ```
 
-You can also point the builder at another compatible JSONL file:
+If `codex-events.jsonl` is not present, the builder uses the bundled `data/codex-events-snapshot.jsonl` captured during this project run. You can also point the builder at another compatible JSONL file:
 
 ```sh
 node scripts/build-data.js path/to/codex-events.jsonl public/data/run-summary.json

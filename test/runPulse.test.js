@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
-import fs from "node:fs";
 import test from "node:test";
-import { buildSummaryFromJsonl, parseJsonl, summarizeEvents } from "../src/runPulse.js";
+import { parseJsonl, summarizeEvents } from "../src/runPulse.js";
 
 test("parseJsonl returns records and line-scoped parse errors", () => {
   const parsed = parseJsonl('{"type":"thread.started"}\nnot-json\n{"type":"turn.started"}\n');
@@ -32,9 +31,8 @@ test("summarizeEvents counts events, command executions, and timeline entries", 
   assert.equal(summary.timeline.length, 4);
 });
 
-test("the bundled run log produces browser-ready summary data", () => {
-  const text = fs.readFileSync("codex-events.jsonl", "utf8");
-  const summary = buildSummaryFromJsonl(text);
+test("generated site data is browser-ready", async () => {
+  const summary = JSON.parse(await import("node:fs/promises").then((fs) => fs.readFile("public/data/run-summary.json", "utf8")));
 
   assert.equal(summary.parseErrors.length, 0);
   assert.ok(summary.totalLines > 0);

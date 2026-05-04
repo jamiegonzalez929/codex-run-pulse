@@ -1,10 +1,12 @@
 # Data Model
 
-Codex Run Pulse reads the local `codex-events.jsonl` file produced during a Codex CLI run and emits `public/data/run-summary.json` for the browser.
+Codex Run Pulse reads a Codex CLI event log and emits `public/data/run-summary.json` for the browser.
 
 ## Source
 
-Each non-empty line in `codex-events.jsonl` is parsed as a standalone JSON object. Invalid lines are retained as parse errors instead of crashing the build, which makes partial logs inspectable.
+Each non-empty line in the source JSONL file is parsed as a standalone JSON object. Invalid lines are retained as parse errors instead of crashing the build, which makes partial logs inspectable.
+
+By default, `scripts/build-data.js` reads `codex-events.jsonl` when a live local log exists. Otherwise it uses the bundled `data/codex-events-snapshot.jsonl` captured during this project run.
 
 ## Derived Fields
 
